@@ -8,5 +8,6 @@ namespace Exsecises
 {
     internal class TestGit
     {
+        int test1 = 0;
     }
 }
