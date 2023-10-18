@@ -19,5 +19,7 @@ namespace Exsecises
         int test4 = 0;
         int test5 = 0;
         int test6 = 0;
+
+        int test8 = 1;
     }
 }
