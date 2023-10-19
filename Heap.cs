@@ -119,7 +119,7 @@ namespace Exsecises
         // Create Heap from p node to q node using Shift Down
         // Input: Arr[p+1]..Arr[q] is Heap
         // Output: Arr[p]..Arr[q] is Heap
-        public void ShiftDown(int p, int q)
+        private void ShiftDown(int p, int q)
         {
             int i = p; 
             int theKey = Arr[i];
