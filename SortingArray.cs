@@ -258,7 +258,111 @@ namespace Exsecises
             Sort(0, n-1);
         }
 
-        // Merge Sort 
+        // Merge Sort - recursion
+        private void Merge(ItemSort[] temp, int p, int t, int q)
+        {
+            int k = t - 1; // the end index of array 1
+            int i = p; // index of array 1
+            int j = t; // index of array 2
+            int m = 0; // index of temp
+            while ((i <= k) && (j <= q))
+            {
+                if (arr[i].key <= arr[j].key)
+                {
+                    temp[m] = arr[i];
+                    i++;
+                }
+                else
+                {
+                    temp[m] = arr[j];
+                    j++;
+                }
+                m++;
+            }
+            // copy the remaining element of arr 1 to arr temp
+            for (int r = i; r <= k; r++)
+            {
+                temp[m] = arr[r];
+                m++;
+            }
+            // copy the remaining element of arr 2 to arr temp
+            for (int r = j; r <=q; r++)
+            {
+                temp[m] = arr[r];
+                m++;
+            }
+            // copy arr temp to main arr
+            for (int r=0; r < m; r++)
+            {
+                arr[p + r] = temp[r];
+            }    
+        }
+
+        private void SortRun(ItemSort[] temp, int p, int q)
+        {
+            if (p < q)
+            {
+                int k = (p + q) / 2;
+                SortRun(temp, p, k);
+                SortRun(temp,k + 1, q);
+                Merge(temp, p, k + 1, q);
+            }
+        }
+
+        public void MergeSort()
+        {
+            ItemSort[] temp = new ItemSort[n];
+            SortRun(temp, 0, n - 1);
+        }
+
+        //  RAdix Sort 
+
+        public void RadixSort()
+        {
+            const int BASE = 10;
+            int[] bucket = new int[BASE];
+            ItemSort[] b = new ItemSort[n];
+            // Find the max value to estimate the number of loop
+            int maxVal = arr[0].key;
+            for (int i = 1; i < n; i++)
+            {
+                if (arr[i].key > maxVal)
+                {
+                    maxVal = arr[i].key;
+                }    
+            }
+
+            // Alnalys weight
+            int weight = 1;
+            while (maxVal/weight > 0)
+            {
+                // create the first array bucket 
+                for (int i = 0; i < BASE; i++)
+                {
+                    bucket[i] = 0;
+                }
+
+                // Calculate number item of bucket
+                for (int i = 0; i < n; i++)
+                {
+                    bucket[i] = bucket[i] + bucket[i - 1];
+                }    
+
+                // Copy arr[i] to bucket of b[]
+                for (int i = n-1; i >= 0; i--)
+                {
+                    bucket[(arr[i].key / weight) % BASE]--;
+                    b[bucket[(arr[i].key / weight) % BASE]] = arr[i];
+                }
+
+                // copy bucket b[] to arr[]
+                for (int i = 0; i < n; i++)
+                {
+                    arr[i] = b[i];
+                }
+                weight = weight * BASE;
+            }
+        }
 
     }
 
