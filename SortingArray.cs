@@ -227,6 +227,39 @@ namespace Exsecises
             }    
         }
 
+        // Lomuto method
+        private int LomutoPartition(int start, int end)
+        {
+            int pivot = arr[end].key;
+            int i = start;
+            for (int j = start; j <= end-1;  j++)
+            {
+                if (arr[j].key < pivot)
+                {
+                    Swap(ref arr[i], ref arr[j]);
+                    i++;
+                }
+            }
+            Swap(ref arr[i], ref arr[end]);
+            return i;
+        }
+
+        private void Sort(int start, int end)
+        {
+            if (start < end)
+            {
+                int k = LomutoPartition(start, end);
+                Sort(start, k-1);
+                Sort(k + 1, end);
+            }
+        }
+        public void QuickSort()
+        {
+            Sort(0, n-1);
+        }
+
+        // Merge Sort 
+
     }
 
     public class ItemSort
@@ -234,6 +267,4 @@ namespace Exsecises
         public int key;
         public int info;
     }
-
-
 }
