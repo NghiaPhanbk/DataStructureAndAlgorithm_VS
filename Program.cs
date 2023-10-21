@@ -19,6 +19,7 @@ namespace Exsecises
                 Console.WriteLine("4: Test Binary tree");
                 Console.WriteLine("5: Test Max Heap");
                 Console.WriteLine("6: Test Binary Search tree");
+                Console.WriteLine("7: Test Sorting Algorithm");
                 option = Convert.ToInt32(Console.ReadLine());
                 switch(option)
                 {
@@ -50,6 +51,11 @@ namespace Exsecises
                     case 6:
                         {
                             TestBinarySearchTree();
+                            break;
+                        }
+                    case 7:
+                        {
+                            TestSorting();
                             break;
                         }
                 }
@@ -684,5 +690,99 @@ namespace Exsecises
         }
         #endregion
 
+        #region testc Sorting Algorith
+        public static void TestSorting()
+        {
+            int n = 8;
+            int[] b = { 4, 7, 2, 6, 1, 8, 6, 3 };
+            SortingArray a = new SortingArray(n);
+            int option = 0;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("Add task for test Binary Search Tree:");
+                Console.WriteLine("1. Create array a");
+                Console.WriteLine("2. Show array a");
+                Console.WriteLine("3. Insertion Sort");
+                Console.WriteLine("4. Selection Sort");
+                Console.WriteLine("5. Heap Sort");
+                Console.WriteLine("6. Bubble Sort no Flag");
+                Console.WriteLine("7. Bubble Sort with flag");
+                Console.WriteLine("8. Shaker Sort");
+                Console.WriteLine("9. Quick Sort");
+                Console.WriteLine("10. Merge Sort");
+                Console.WriteLine("11. Radix Sort");
+                Console.WriteLine("12. Shell Sort");
+                Console.WriteLine("0. End process");
+                Console.Write("Your choice: ");
+                option = Convert.ToInt32(Console.ReadLine());
+                switch (option)
+                {
+                    case 1:
+                        {
+                            a.Copy(b,n);
+                            break;
+                        }
+                    case 2:
+                        {
+                            a.Display();
+                            Console.ReadLine();
+                            break;
+                        }
+                    case 3:
+                        {
+                            a.InsertionSort();
+                            break;
+                        }
+                    case 4:
+                        {
+                            a.SelectionSort();
+                            break;
+                        }
+                    case 5:
+                        {
+                            a.HeapSort();
+                            break;
+                        }
+                    case 6:
+                        {
+                            a.BubbleSortNoFlag();
+                            break;
+                        }
+                    case 7:
+                        {
+                            a.BubbleSortWithFlag();
+                            break;
+                        }
+                    case 8:
+                        {
+                            a.ShakerSort();
+                            break;
+                        }
+                    case 9:
+                        {
+                            a.QuickSort();
+                            break;
+                        }
+                    case 10:
+                        {
+                            a.MergeSort();
+                            break;
+                        }
+                    case 11:
+                        {
+                            a.RadixSort();
+                            break;
+                        }
+                    case 12:
+                        {
+                            a.ShellSort();
+                            break;
+                        }
+                }
+            }
+            while (option != 0);
+        }
+        #endregion
     }
 }

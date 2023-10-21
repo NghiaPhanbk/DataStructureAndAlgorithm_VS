@@ -12,12 +12,12 @@ namespace Exsecises
     {
         private ItemSort[] arr;
         private int n;
-        public SortingArray(int count)
+        public SortingArray(int N)
         {
-            arr = new ItemSort[n];
-            for (int i = 0; i < count; i++)
+            arr = new ItemSort[N];
+            for (int i = 0; i < N; i++)
                 arr[i] = new ItemSort();
-            n = count;
+            n = N;
         }
         // copy array a[] has n item to arr[]
         public void Copy(int[] a, int count)
@@ -84,7 +84,7 @@ namespace Exsecises
                     ItemSort x = arr[i];
                     int j = i - k;
                     bool cont = true;
-                    while ((i >= 0) && cont)
+                    while ((j >= 0) && cont)
                     {
                         if (arr[j].key > x.key)
                         {
@@ -343,7 +343,11 @@ namespace Exsecises
                 }
 
                 // Calculate number item of bucket
-                for (int i = 0; i < n; i++)
+                for (int i = 0; i<n ; i++)
+                {
+                    bucket[(arr[i].key/weight)%BASE]++;
+                }
+                for (int i = 1; i < BASE; i++)
                 {
                     bucket[i] = bucket[i] + bucket[i - 1];
                 }    
